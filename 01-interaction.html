@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="generator" content="pandoc">
+    <title>Introduction to Hadoop</title>
+    $(cat _includes/header.html)
+  </head>
+  <body class="lesson">
+    <div class="container card">
+      $(cat _includes/banner.html)
+      <article>
+      <div class="row">
+        <div class="col-md-10 col-md-offset-1">
+                    <a href="index.html"><h1 class="title">Introduction to Hadoop</h1></a>
+          <h2 class="subtitle">Interacting with Hadoop</h2>
+          <section class="objectives panel panel-warning">
+<div class="panel-heading">
+<h2 id="learning-objectives"><span class="glyphicon glyphicon-certificate"></span>Learning objectives</h2>
+</div>
+<div class="panel-body">
+<ul>
+<li>Learn how to access the web-based Jupyter notebook.</li>
+<li>Learn how to use the Hadoop command in Jupyter shells.</li>
+<li>Learn how to access the web UI of the Hadoop Distributed File System.</li>
+</ul>
+</div>
+</section>
+<p>In this workshop, we will leverage the Jupyter infrastructure at Clemson University to directly interact with Hadoop.</p>
+<h2 id="jupyter">Jupyter</h2>
+<p>To start using the Jupyter notebook, go to <strong>https://webapp01-ext.palmetto.clemson.edu:8443</strong> and sign in with your Clemson credentials. Next, click <strong>Start My Server</strong> to spawn a new Jupyter notebook. You should see the content of your home directory on Palmetto under <strong>Files</strong>. <br> <img src="fig/jupyter/login.png" \
+     alt="Login" \
+     style="height:300px"> <br> Under <strong>New</strong>, create a new folder. This folder will appear immediately in your home directly with the name <strong>Untitled Folder</strong>. Check the selection box next to this folder, a button called <strong>Rename</strong> will appear below the <strong>Files</strong> tab. Click this button to change this folder to a name of your choice. Click on this folder to go to the next level. <br> <img src="fig/jupyter/folder.png" \
+     alt="Create New Folder" \
+     style="height:300px"> <br> Use the menu under <strong>New</strong> once again to create a new Jupyter notebook using Python 3.0 distributed through Anaconda 2.5.0 by Continuum. <br> <img src="fig/jupyter/notebook.png" \
+     alt="Create New Folder" \
+     style="height:300px"> <br> Change the name of this notebook to “Introduction to Hadoop”. <br> <img src="fig/jupyter/notebook-2.png" \
+     alt="Create New Folder" \
+     style="height:300px"> <br> For this workshop, the default codes inside a cell will be interpreted as Python language. However, any line that begins with <strong>!</strong> will be interpreted as a Linux system command. <br></p>
+<div class="sourceCode"><pre class="sourceCode bash"><code class="sourceCode bash"><span class="kw">print</span> <span class="st">&quot;Hello World&quot;</span></code></pre></div>
+<pre class="output"><code>Hello World</code></pre>
+<div class="sourceCode"><pre class="sourceCode bash"><code class="sourceCode bash">!<span class="kw">ls</span> -l /</code></pre></div>
+<pre class="output"><code>total 424
+dr-xr-xr-x.    2 root   root     4096 Feb 26 04:18 bin
+drwxrws---    30 root   bioengr  4096 Apr 18 18:31 bioengr
+dr-xr-xr-x.    4 root   root     4096 Jan 26 17:22 boot
+drwxr-xr-x.   10 root   root     4096 Oct 17  2014 cgroup
+drwxr-xr-x     3 root   root     4096 Aug  4  2015 cgroups_test
+drwxr-xr-x    24 root   root     4096 Apr 27 16:54 common
+lrwxrwxrwx.    1 root   root        7 Oct 17  2014 common1 -&gt; /common
+drwxrwxr-x    17 root   cugi     4096 Mar  4 16:27 cugi
+drwxr-xr-x    18 root   root     4240 Feb 26 14:09 dev
+drwxr-xr-x.  148 root   root    12288 May 10 14:49 etc
+drwxr-xr-x.    2 root   root     4096 Oct 17  2014 fast
+drwxrws---    24 root   feltus   4096 Apr  8 11:17 feltus
+drwxr-xr-x     3 root   root     4096 Apr 26  2015 hadoop
+drwxr-xr-x    17 root   root     4096 Dec  2 11:31 hdp_service_accounts
+drwxr-xr-x  1845 root   root    77824 May 10 14:47 home
+dr-xr-xr-x.   13 root   root     4096 Feb 26 04:18 lib
+dr-xr-xr-x.   10 root   root    12288 Feb 26 04:18 lib64
+drwxr-xr-x.    4 root   root     4096 Apr 26  2015 local
+drwx------.    2 root   root    16384 Oct 17  2014 lost+found
+drwxr-xr-x.    2 root   root     4096 Jan 28 17:10 media
+drwxr-xr-x     8 root   root     4096 May 16  2014 misc
+drwxr-xr-x.    2 root   root     4096 Jul 20  2011 mnt
+drwxr-xr-x     3 nagios nagios   4096 Oct 10  2014 nagios
+drwxr-xr-x.    2 root   root     4096 Sep 25  2013 net
+drwxr-xr-x     9 root   root     4096 Nov  3  2014 nsr
+drwxrwxr-x.   56 root   root     4096 Mar  9 19:36 opt
+drwxrws---    23 root   panicle  4096 Feb 11 13:15 panicle
+dr-xr-xr-x   481 root   root        0 Feb 26 14:08 proc
+dr-xr-x---.   15 root   root     4096 May 10 15:00 root
+dr-xr-xr-x.    2 root   root    12288 Feb 26 04:18 sbin
+drwxr-xr-x     2 root   root     4096 Sep  2  2015 scratch1
+drwxr-xr-x  1740 root   root     1740 May 10 14:47 scratch2
+drwxr-xr-x.    2 root   root     4096 Oct 17  2014 selinux
+drwxrws---    14 root   smlc     4096 Apr 18 13:21 smlc
+drwxr-xr-x   117 root   root     4096 Apr 13 14:42 software
+drwxr-xr-x.    2 root   root     4096 Jul 20  2011 srv
+drwxr-xr-x    13 root   root        0 Feb 26 14:08 sys
+drwxrwxrwt.  574 hbase  hadoop  45056 May 10 06:06 tmp
+drwxr-xr-x.   18 root   root     4096 Feb  5  2015 usr
+drwxr-xr-x.   23 root   root     4096 Oct 17  2014 var
+drwx------.    9 root   root     4096 Oct 17  2014 xcatpost</code></pre>
+<h2 id="hdfs-commands">HDFS commands</h2>
+<p>HDFS provides a set of commands for users to interact with the system from a Linux-based terminal. To view all available HDFS systems commands, run the following in a cell:</p>
+<div class="sourceCode"><pre class="sourceCode bash"><code class="sourceCode bash">!<span class="kw">ssh</span> dsciu001 hdfs</code></pre></div>
+<pre class="output"><code>Usage: hdfs [--config confdir] [--loglevel loglevel] COMMAND
+       where COMMAND is one of:
+  dfs                  run a filesystem command on the file systems supported in Hadoop.
+  classpath            prints the classpath
+  namenode -format     format the DFS filesystem
+  secondarynamenode    run the DFS secondary namenode
+  namenode             run the DFS namenode
+  journalnode          run the DFS journalnode
+  zkfc                 run the ZK Failover Controller daemon
+  datanode             run a DFS datanode
+  dfsadmin             run a DFS admin client
+  haadmin              run a DFS HA admin client
+  fsck                 run a DFS filesystem checking utility
+  balancer             run a cluster balancing utility
+  jmxget               get JMX exported values from NameNode or DataNode.
+  mover                run a utility to move block replicas across
+                       storage types
+  oiv                  apply the offline fsimage viewer to an fsimage
+  oiv_legacy           apply the offline fsimage viewer to an legacy fsimage
+  oev                  apply the offline edits viewer to an edits file
+  fetchdt              fetch a delegation token from the NameNode
+  getconf              get config values from configuration
+  groups               get the groups which users belong to
+  snapshotDiff         diff two snapshots of a directory or diff the
+                       current directory contents with a snapshot
+  lsSnapshottableDir   list all snapshottable dirs owned by the current user
+                        Use -help to see options
+  portmap              run a portmap service
+  nfs3                 run an NFS version 3 gateway
+  cacheadmin           configure the HDFS cache
+  crypto               configure HDFS encryption zones
+  storagepolicies      list/get/set block storage policies
+  version              print the version
+
+Most commands print help when invoked w/o parameters.</code></pre>
+<p>For this workshop, we are interested in file system commands. Create a new cell and run the following:</p>
+<div class="sourceCode"><pre class="sourceCode bash"><code class="sourceCode bash">!<span class="kw">ssh</span> dsciu001 hdfs dfs</code></pre></div>
+<pre class="output"><code>Usage: hadoop fs [generic options]
+    [-appendToFile &lt;localsrc&gt; ... &lt;dst&gt;]
+    [-cat [-ignoreCrc] &lt;src&gt; ...]
+    [-checksum &lt;src&gt; ...]
+    [-chgrp [-R] GROUP PATH...]
+    [-chmod [-R] &lt;MODE[,MODE]... | OCTALMODE&gt; PATH...]
+    [-chown [-R] [OWNER][:[GROUP]] PATH...]
+    [-copyFromLocal [-f] [-p] [-l] &lt;localsrc&gt; ... &lt;dst&gt;]
+    [-copyToLocal [-p] [-ignoreCrc] [-crc] &lt;src&gt; ... &lt;localdst&gt;]
+    [-count [-q] [-h] [-v] [-t [&lt;storage type&gt;]] &lt;path&gt; ...]
+    [-cp [-f] [-p | -p[topax]] &lt;src&gt; ... &lt;dst&gt;]
+    [-createSnapshot &lt;snapshotDir&gt; [&lt;snapshotName&gt;]]
+    [-deleteSnapshot &lt;snapshotDir&gt; &lt;snapshotName&gt;]
+    [-df [-h] [&lt;path&gt; ...]]
+    [-du [-s] [-h] &lt;path&gt; ...]
+    [-expunge]
+    [-find &lt;path&gt; ... &lt;expression&gt; ...]
+    [-get [-p] [-ignoreCrc] [-crc] &lt;src&gt; ... &lt;localdst&gt;]
+    [-getfacl [-R] &lt;path&gt;]
+    [-getfattr [-R] {-n name | -d} [-e en] &lt;path&gt;]
+    [-getmerge [-nl] &lt;src&gt; &lt;localdst&gt;]
+    [-help [cmd ...]]
+    [-ls [-d] [-h] [-R] [&lt;path&gt; ...]]
+    [-mkdir [-p] &lt;path&gt; ...]
+    [-moveFromLocal &lt;localsrc&gt; ... &lt;dst&gt;]
+    [-moveToLocal &lt;src&gt; &lt;localdst&gt;]
+    [-mv &lt;src&gt; ... &lt;dst&gt;]
+    [-put [-f] [-p] [-l] &lt;localsrc&gt; ... &lt;dst&gt;]
+    [-renameSnapshot &lt;snapshotDir&gt; &lt;oldName&gt; &lt;newName&gt;]
+    [-rm [-f] [-r|-R] [-skipTrash] [-safely] &lt;src&gt; ...]
+    [-rmdir [--ignore-fail-on-non-empty] &lt;dir&gt; ...]
+    [-setfacl [-R] [{-b|-k} {-m|-x &lt;acl_spec&gt;} &lt;path&gt;]|[--set &lt;acl_spec&gt; &lt;path&gt;]]
+    [-setfattr {-n name [-v value] | -x name} &lt;path&gt;]
+    [-setrep [-R] [-w] &lt;rep&gt; &lt;path&gt; ...]
+    [-stat [format] &lt;path&gt; ...]
+    [-tail [-f] &lt;file&gt;]
+    [-test -[defsz] &lt;path&gt;]
+    [-text [-ignoreCrc] &lt;src&gt; ...]
+    [-touchz &lt;path&gt; ...]
+    [-truncate [-w] &lt;length&gt; &lt;path&gt; ...]
+    [-usage [cmd ...]]
+
+Generic options supported are
+-conf &lt;configuration file&gt;     specify an application configuration file
+-D &lt;property=value&gt;            use value for given property
+-fs &lt;local|namenode:port&gt;      specify a namenode
+-jt &lt;local|resourcemanager:port&gt;    specify a ResourceManager
+-files &lt;comma separated list of files&gt;    specify comma separated files to be copied to the map reduce cluster
+-libjars &lt;comma separated list of jars&gt;    specify comma separated jar files to include in the classpath.
+-archives &lt;comma separated list of archives&gt;    specify comma separated archives to be unarchived on the compute machines.
+
+The general command line syntax is
+bin/hadoop command [genericOptions] [commandOptions]</code></pre>
+<p>We can see that HDFS provides a number of file system commands that are quite similar to their Linux counterpart. For example, <strong><em>-chown</em></strong> and <strong><em>-chmod</em></strong> change ownership and permission of HDFS files and directories, <strong><em>-ls</em></strong> lists content of a directory, <strong><em>-mkdir</em></strong> creates new directory, <strong><em>-rm</em></strong> removes files and directories, and so on.</p>
+<aside class="callout panel panel-info">
+<div class="panel-heading">
+<h2 id="hadoop-fs-and-hdfs-dfs"><span class="glyphicon glyphicon-pushpin"></span><strong><em>hadoop fs</em></strong> and <strong><em>hdfs dfs</em></strong></h2>
+</div>
+<div class="panel-body">
+<p><strong><em>hadoop fs</em></strong> is an older syntax for <strong><em>hdfs dfs</em></strong>. While both commands produce the same results, you are encouraged to use <strong><em>hdfs dfs</em></strong> instead.</p>
+</div>
+</aside>
+<p>When a Hadoop cluster is first started, there is no data. Users usually import data into the cluster from the traditional Linux-based file system. This is done by using the commandOption <strong><em>-put</em></strong>. Vice versa, to move data from HDFS back to a Linux-based file system, commandOption <strong><em>-get</em></strong> is used.</p>
+<aside class="callout panel panel-info">
+<div class="panel-heading">
+<h2 id="hadoop-distributed-file-system-is-not-the-linux-file-system"><span class="glyphicon glyphicon-pushpin"></span>Hadoop Distributed File System is not the Linux File System</h2>
+</div>
+<div class="panel-body">
+<p>It is important to distinguish between the files and directories that are stored on HDFS and those that are stored on the Linux File Systems. In the Hadoop usage guide, the prefix <strong><em>local</em></strong> implies a path to a file/directory that is on a Linux File System. Anything else implies a path to a file/directory on HDFS</p>
+</div>
+</aside>
+<h2 id="hdfs-web-interface">HDFS Web Interface</h2>
+<p>At Clemson University, the Hadoop Big Data infrastructure is called the Cypress cluster. It uses an open source flavor of Hadoop distributed by Hortonworks. HDFS provides a web-based user interface for users to view stored data. The interface is hosted on HDFS’ NameNode, which is replicated to ensure uninterrupted operation. The URLs of the NameNode replicates are: <br> <sub>~</sub> {.output} http://namenode1.palmetto.clemson.edu:50070 http://namenode2.palmetto.clemson.edu:50070 <sub>~</sub> <br> <img src="fig/Namenodes.png" \
+     alt="Namnodes" \
+     style="height:500px"> <br> This figure shows the interfaces of the two HDFS NameNode replications. Only the active instance (left) can be used to view files and directories.</p>
+<h2 id="check-your-understanding-using-jupyter-shell-to-download-data" class="callout">Check your understanding: Using Jupyter shell to download data</h2>
+<p>Create a directory named <strong>intro-to-hadoop</strong> in your home directory on Palmetto</p>
+<p>From inside this directory, run the following command to get data from github</p>
+<div class="sourceCode"><pre class="sourceCode bash"><code class="sourceCode bash">!<span class="kw">git</span> clone https://github.com/clemsoncoe/Introduction-to-Hadoop-data.git</code></pre></div>
+<p>View this newly cloned directory to confirm that you have the file <strong><em>gutenberg-shakespeare.txt</em></strong>.</p>
+<h2 id="check-your-understanding-view-files-and-directories-on-hdfs" class="challenge">Check your understanding: View files and directories on HDFS</h2>
+<p>View the content of your HDFS user directory (/user/<strong>your-username</strong>) on Cypress</p>
+<h2 id="check-your-understanding-create-directory-on-hdfs" class="challenge">Check your understanding: Create directory on HDFS</h2>
+<p>Create a directory in your HDFS user directory named <strong>intro-to-hadoop</strong></p>
+<h2 id="check-your-understanding-import-file-to-hdfs" class="challenge">Check your understanding: Import file to HDFS</h2>
+<p>Copy the file <strong><em>gutenberg-shakespeare.txt</em></strong> from Palmetto to this newly created <strong>intro-to-hadoop</strong> directory on HDFS using <strong>put</strong>. View the content of the <strong>intro-to-hadoop</strong> directory to confirm that the file has been successfully uploaded.</p>
+        </div>
+      </div>
+      </article>
+      $(cat _includes/footer.html)
+    </div>
+    $(cat _includes/javascript.html)
+  </body>
+</html>
